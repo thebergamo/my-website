@@ -12,7 +12,7 @@ module.exports = {
   author: 'Marcos Bérgamo',
 
   // open graph metadata (optional)
-  description: 'Example site description',
+  description: 'Personal site of Marcos Bérgamo',
   socialImageTitle: 'Marcos Bérgamo',
   socialImageSubtitle: 'Hello World! 👋',
 

@@ -26,7 +26,37 @@ export const Footer: React.FC<{
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2021 {config.author}</div>
+      <div className={styles.copyright}>
+        <section>&copy; Copyright - 2021 {config.author}</section>
+        <section>
+          <p>
+            This website uses the template provided by{' '}
+            <a
+              className='notion-link'
+              href='https://transitivebullsh.it/'
+              title='Transitive Bullshit website'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Travis Fisher
+            </a>
+            .
+          </p>
+          <p>
+            Check out the template on{' '}
+            <a
+              className='notion-link'
+              href='https://github.com/transitive-bullshit/nextjs-notion-starter-kit'
+              title='This blog base template at Github'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Github
+            </a>
+            .
+          </p>
+        </section>
+      </div>
 
       {hasMounted ? (
         <div className={styles.settings}>
