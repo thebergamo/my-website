@@ -4,13 +4,14 @@ import { getPreviewImages } from './get-preview-images'
 import { mapNotionImageUrl } from './map-image-url'
 import { fetchTweetAst } from 'static-tweets'
 import pMap from 'p-map'
+import { ExtendedRecordMap2 } from './types'
 
 export const notion = new NotionAPI({
   apiBaseUrl: process.env.NOTION_API_BASE_URL
 })
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
-  const recordMap = await notion.getPage(pageId)
+  const recordMap: ExtendedRecordMap2 = await notion.getPage(pageId)
   const blockIds = Object.keys(recordMap.block)
 
   const imageUrls: string[] = blockIds
@@ -47,7 +48,7 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 
   const urls = Array.from(new Set(imageUrls))
   const previewImageMap = await getPreviewImages(urls)
-  ;(recordMap as any).preview_images = previewImageMap
+  recordMap.preview_images = previewImageMap
 
   const tweetIds: string[] = blockIds
     .map((blockId) => {

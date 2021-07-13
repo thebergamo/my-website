@@ -82,3 +82,7 @@ export interface PreviewImage {
 export interface PreviewImageMap {
   [url: string]: PreviewImage
 }
+
+export interface ExtendedRecordMap2 extends ExtendedRecordMap {
+  preview_images?: PreviewImageMap
+}

@@ -159,6 +159,10 @@
   margin-right: auto;
 }
 
+.blog-post .notion-title {
+  display: block;
+}
+
 .notion-title {
   /* TODO: get rid of this in case we find a way of remove title */
   display: none;

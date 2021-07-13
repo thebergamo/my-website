@@ -36,6 +36,7 @@ import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
+import { getSocialImageUrl } from 'lib/get-social-image'
 
 // const Code = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Code)
@@ -103,7 +104,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     title,
     pageId,
     rootNotionPageId: site.rootNotionPageId,
-    recordMap
+    recordMap,
+    block
   })
 
   if (!config.isServer) {
@@ -127,7 +129,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const minTableOfContentsItems = 3
 
   const socialImage = mapNotionImageUrl(
-    (block as PageBlock).format?.page_cover || config.defaultPageCover,
+    getSocialImageUrl(block as PageBlock, recordMap),
     block
   )
 
@@ -217,7 +219,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+          pageId === site.rootNotionPageId && 'index-page',
+          isBlogPost && 'blog-post'
         )}
         components={{
           pageLink: ({
